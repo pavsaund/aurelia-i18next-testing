@@ -32,7 +32,10 @@ export function configure(aurelia: Aurelia) {
       fallbackLng : 'en',
       debug : true,
       defaultNS: 'translation',
-      ns: ['translation']
+      ns: [
+        'translation',
+        'other-translations'
+      ]
     });
   });
 
