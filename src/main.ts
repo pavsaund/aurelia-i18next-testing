@@ -1,7 +1,8 @@
 import {Aurelia} from 'aurelia-framework'
 import * as environment from '../config/environment.json';
 import {PLATFORM} from 'aurelia-pal';
-import { I18N, Backend, TCustomAttribute } from "aurelia-i18n";
+import { Backend, TCustomAttribute } from "aurelia-i18n";
+const resBundle = require('i18next-resource-store-loader!./locales/index');
 
 export function configure(aurelia: Aurelia) {
   aurelia.use
@@ -25,9 +26,7 @@ export function configure(aurelia: Aurelia) {
     // adapt options to your needs (see http://i18next.com/docs/options/)
     // make sure to return the promise of the setup method, in order to guarantee proper loading
     return instance.setup({
-      backend: {                                  // <-- configure backend settings
-        loadPath: 'locales/{{lng}}/{{ns}}.json', // <-- XHR settings for where to get the files from
-      },
+      resources: resBundle,
       attributes: aliases,
       lng : 'no',
       fallbackLng : 'en',
